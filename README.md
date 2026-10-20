@@ -11,7 +11,7 @@ Glioblastoma is the aggressive grade. A patient with GBM who is classified as LG
 ## What I built
 
 - **Data:** 861 patients from the TCGA LGG and GBM projects, 20 mutation markers plus age at diagnosis and gender. GBM is the positive class.
-- **Leak-free pipeline:** imputation, scaling and feature selection (SelectKBest, chi-squared) sit inside a scikit-learn `Pipeline`, so they are refitted within every cross-validation fold and never see the test set.
+- **Leak-free pipeline:** feature selection (SelectKBest, chi-squared) and scaling sit inside a scikit-learn `Pipeline`, so they are refitted within every cross-validation fold and never see the test set.
 - **Panel size as a clinical decision:** 12 genes gave 0.875 cross-validated accuracy and 10 genes gave 0.866. I kept 10, because every extra gene is another laboratory test per patient and a difference of 0.009 is not clinically meaningful.
 - **Models compared:** logistic regression, random forest (baseline, then tuned with GridSearchCV), support vector machine (SVM) and Gaussian Naive Bayes.
 - **Beyond the score:** decision threshold analysis, permutation importance and a review of the misclassified patients.
